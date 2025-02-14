@@ -26,6 +26,12 @@
 
 .question-text {
   margin: 16px;
+  font-size: 24px;
+}
+
+.question-progress {
+  margin: 16px;
+  font-size: 16px;
 }
 
 .button-group {
@@ -60,11 +66,11 @@
   background: #f9fafb;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 16px;
+  margin: 0 16px;
   max-width: 500px;
 
   h3 {
-    font-size: 24px;
+    font-size: 16px;
     margin: 8px;
   }
 

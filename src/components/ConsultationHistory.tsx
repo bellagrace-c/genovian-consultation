@@ -15,7 +15,7 @@ interface ConsultationHistoryProps {
 const ConsultationHistory: React.FC<ConsultationHistoryProps> = ({ consultationHistory, onEdit, isSubmitted }) => {
     return (
         <div className="history-container">
-            <h3>Consultation History</h3>
+            <h3>Consultation question and answer history</h3>
             <ul>
                 {consultationHistory.map((entry, index) => (
                     <li key={index}>

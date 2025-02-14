@@ -2,24 +2,22 @@ import React, { useState } from "react";
 import classNames from "classnames";
 import "./ConsultationForm.scss";
 import medexpress from "../assets/medexpress.png";
-import {questions} from "../utils/consultationQuestions.ts";
+import { questions } from "../utils/consultationQuestions.ts";
 import ConsultationHistory from "./ConsultationHistory.tsx";
 
-const submitConsultation = (answers: Record<string, boolean>) => {
-    console.log("Collected Consultation Data:", answers);
+const submitConsultation = (answersHistory: { question: string; answer: boolean }[]) => {
+    console.log("Collected Consultation Data:", answersHistory);
 };
 
 const ConsultationForm: React.FC = () => {
     const [step, setStep] = useState(0);
-    const [answers, setAnswers] = useState<Record<string, boolean>>({});
+    //Assumption being the answers are yes or no questions
+    //Could be extended to include differently typed answer
+    const [answersHistory, setAnswersHistory] = useState<{ question: string; answer: boolean }[]>([]);
     const [submitted, setSubmitted] = useState(false);
-    const [history, setHistory] = useState<{ question: string; answer: boolean }[]>([]);
 
     const handleAnswer = (answer: boolean) => {
-        const newAnswers = { ...answers, [questions[step]]: answer };
-        setAnswers(newAnswers);
-
-        const updatedHistory = [...history];
+        const updatedHistory = [...answersHistory];
         const existingIndex = updatedHistory.findIndex((entry) => entry.question === questions[step]);
 
         if (existingIndex !== -1) {
@@ -28,12 +26,12 @@ const ConsultationForm: React.FC = () => {
             updatedHistory.push({ question: questions[step], answer });
         }
 
-        setHistory(updatedHistory);
+        setAnswersHistory(updatedHistory);
 
         if (step < questions.length - 1) {
             setStep(step + 1);
         } else {
-            submitConsultation(newAnswers);
+            submitConsultation(updatedHistory);
             setSubmitted(true);
         }
     };
@@ -72,8 +70,9 @@ const ConsultationForm: React.FC = () => {
                 ) : (
                     <p className="question-text">SUCCESS! Your consultation is complete.</p>
                 )}
+                <div className="question-progress">Question {step+1}/{questions.length}</div>
                 {history.length > 0 && (
-                    <ConsultationHistory consultationHistory={history} onEdit={editAnswer} isSubmitted={submitted} />
+                    <ConsultationHistory consultationHistory={answersHistory} onEdit={editAnswer} isSubmitted={submitted} />
                 )}
             </main>
 
