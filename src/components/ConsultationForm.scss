@@ -1,0 +1,120 @@
+.consultation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  width: 100%;
+  padding: 16px;
+  background-color: #2563eb;
+  color: white;
+  display: flex;
+
+  .logo {
+    height: 40px;
+    margin: auto;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.question-text {
+  margin: 16px;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.yes-button {
+  background-color: #22c55e;
+
+  &:hover {
+    background-color: #16a34a;
+  }
+}
+
+.no-button {
+  background-color: #ef4444;
+
+  &:hover {
+    background-color: #dc2626;
+  }
+}
+
+.history-container {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 600px;
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem;
+      border-bottom: 1px solid #ddd;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .edit-button {
+        background-color: #facc15;
+        border: none;
+        padding: 0.3rem 0.6rem;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 0.9rem;
+
+        &:hover {
+          background-color: #eab308;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+  background-color: #1f2937;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
